@@ -10,9 +10,9 @@ Tutorial:
 2. Select the MRHead data set (Slicer will then download and import this set)
 3. Open the Volume Projection Module via Modules>Filtering>Volume Projection
 4. Load a volume into the scene
-5. Select the input volume with the input volume combo box
+5. Select the MRHEAD volume with the input volume combo box
 6. Load/Create a volume with the output volume combo box
-7. Adjust the ROI
+7. Customize the ROI
 8. Click the apply projection button to store the projection to the output volume
 
 Contained Modules:
