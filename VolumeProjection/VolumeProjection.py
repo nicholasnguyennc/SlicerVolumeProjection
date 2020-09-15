@@ -20,9 +20,9 @@ class VolumeProjection(ScriptedLoadableModule):
 
     def __init__(self, parent):
         ScriptedLoadableModule.__init__(self, parent)
-        self.parent.title = "Volume Projection"    # TODO: make this more human readable by adding spaces
-        self.parent.contributors = ["John Doe (AnyWare Corp.)"]    # TODO: replace with "Firstname Lastname (Organization)"
-
+        self.parent.title = "Volume Projection"
+        self.parent.contributors = ["Nicholas Nguyen (SonoVol Inc.), Brian Fischer (SonoVol Inc.)"]
+        self.parent.categories = ["Filtering"]
 #
 # VolumeProjectionWidget
 #
