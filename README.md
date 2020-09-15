@@ -8,12 +8,14 @@ Load volumes and perform maximum, minimum, mean, and standard deviation projecti
 Tutorial:
 
 Sample Data: http://www.slicer.org/w/img_auth.php/4/43/MR-head.nrrd
-1. Open the Volume Projection Module via Modules>Filtering>Volume Projection
-1. Load a volume into the scene
-2. Select the input volume with the input volume combo box
-2. Load/Create a volume with the output volume combo box
-3. Adjust the ROI
-4. Click the apply projection button to store the projection to the output volume
+1. In 3D-Slicer, navigate to the Sample Data Module
+2. Select the MRHead data set (Slicer will then download and import this set)
+3. Open the Volume Projection Module via Modules>Filtering>Volume Projection
+4. Load a volume into the scene
+5. Select the input volume with the input volume combo box
+6. Load/Create a volume with the output volume combo box
+7. Adjust the ROI
+8. Click the apply projection button to store the projection to the output volume
 
 Contained Modules:
 ROIModule - Provides custom Slicer Annotation ROI to bound input volume 
