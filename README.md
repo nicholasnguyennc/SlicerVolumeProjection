@@ -25,6 +25,7 @@ Tutorial:
 ![CustomizeROI](https://raw.githubusercontent.com/nicholasnguyennc/SlicerVolumeProjection/assets/AdjustROI.png)
 
 7. Click the apply projection button to store the projection to the output volume
+
 ![EndResult](https://raw.githubusercontent.com/nicholasnguyennc/SlicerVolumeProjection/assets/StoredProjection.png)
 
 Contained Modules:
