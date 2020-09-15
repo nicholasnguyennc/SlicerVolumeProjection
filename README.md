@@ -27,4 +27,5 @@ License: 3D Slicer License (https://github.com/Slicer/Slicer/blob/master/License
 
 
 Collaborators: Nicholas Nguyen (SonoVol Inc.), Brian Fischer (SonoVol Inc.)
+
 August 2020.
