@@ -26,5 +26,5 @@ Crop Volume Module - Crops data from input volume based upon custom bounds
 License: 3D Slicer License (https://github.com/Slicer/Slicer/blob/master/License.txt)
 
 
-Nicholas Nguyen. SonoVol Inc.
+Collaborators: Nicholas Nguyen (SonoVol Inc.), Brian Fischer (SonoVol Inc.)
 August 2020.
