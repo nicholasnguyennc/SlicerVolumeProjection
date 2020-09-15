@@ -16,8 +16,11 @@ Tutorial:
 8. Click the apply projection button to store the projection to the output volume
 
 Contained Modules:
+
 ROIModule - Provides custom Slicer Annotation ROI to bound input volume 
+
 SimpleITK - Performs maximum, minimum, mean, and standard deviation projection operations
+
 Crop Volume Module - Crops data from input volume based upon custom bounds
 
 License: 3D Slicer License (https://github.com/Slicer/Slicer/blob/master/License.txt)
