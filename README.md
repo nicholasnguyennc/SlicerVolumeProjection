@@ -8,9 +8,11 @@ Load volumes and perform maximum, minimum, mean, and standard deviation projecti
 Tutorial:
 1. In 3D-Slicer, navigate to the Sample Data Module
 2. Select the MRHead data set (Slicer will then download and import this set)
+
 ![Image of Data Set](https://raw.githubusercontent.com/nicholasnguyennc/SlicerVolumeProjection/assets/SampleData.png)
 3. Open the Volume Projection Module via Modules>Filtering>Volume Projection
 4. Select the MRHEAD volume with the input volume combo box
+
 ![Select Input](https://raw.githubusercontent.com/nicholasnguyennc/SlicerVolumeProjection/assets/SelectVolume.png)
 5. Create a volume with the output volume combo box
 
