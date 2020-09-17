@@ -7,9 +7,9 @@ project(Volume Projection Projection)
 set(EXTENSION_HOMEPAGE "https://github.com/nicholasnguyennc/SlicerVolumeProjection")
 set(EXTENSION_CATEGORY "Filtering")
 set(EXTENSION_CONTRIBUTORS "Nicholas Nguyen (SonoVol Inc), Brian Fischer (SonoVol Inc)")
-set(EXTENSION_DESCRIPTION "Volume Projection is an extension for Slicer. Load volumes and perform maximum, minimum, mean, and standard deviation projections along axial, sagittal, and coronal axes with customizable bounds.")
-set(EXTENSION_ICONURL "http://www.example.com/Slicer/Extensions/VolumeProjection.png")
-set(EXTENSION_SCREENSHOTURLS "http://www.example.com/Slicer/Extensions/VolumeProjection/Screenshots/1.png")
+set(EXTENSION_DESCRIPTION "The extension is a tool used to perform maximum, minimum, mean, and standard deviation projections along axial, sagittal, and coronal axes with customizable bounds.")
+set(EXTENSION_ICONURL "")
+set(EXTENSION_SCREENSHOTURLS "https://raw.githubusercontent.com/nicholasnguyennc/SlicerVolumeProjection/assets/ProjectionUI.png https://raw.githubusercontent.com/nicholasnguyennc/SlicerVolumeProjection/assets/SampleData.png https://raw.githubusercontent.com/nicholasnguyennc/SlicerVolumeProjection/assets/SelectVolume.png https://raw.githubusercontent.com/nicholasnguyennc/SlicerVolumeProjection/assets/CreateVolume.png https://raw.githubusercontent.com/nicholasnguyennc/SlicerVolumeProjection/assets/AdjustROI.png https://raw.githubusercontent.com/nicholasnguyennc/SlicerVolumeProjection/assets/StoredProjection.png")
 set(EXTENSION_DEPENDS "NA") # Specified as a list or "NA" if no dependencies
 
 #-----------------------------------------------------------------------------
