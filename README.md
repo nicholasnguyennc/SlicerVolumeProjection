@@ -1,7 +1,7 @@
 Volume Projection
 
 Volume Projection is an extension for Slicer.
-GUI tool perform maximum, minimum, mean, and standard deviation projections along axial, sagittal, and coronal axes with customizable bounds.
+The extension is a GUI tool used to perform maximum, minimum, mean, and standard deviation projections along axial, sagittal, and coronal axes with customizable bounds.
 
 ![Image of UI](https://raw.githubusercontent.com/nicholasnguyennc/SlicerVolumeProjection/assets/ProjectionUI.png)
 
