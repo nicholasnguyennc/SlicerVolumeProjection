@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13.4)
 
-project(Volume Projection Projection)
+project(VolumeProjection)
 
 #-----------------------------------------------------------------------------
 # Extension meta-information
