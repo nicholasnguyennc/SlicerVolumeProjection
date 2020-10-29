@@ -124,15 +124,6 @@ class VolumeProjectionWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         if self.ui.inputSelector.currentNode():
             slicer.mrmlScene.GetNodeByID(self.roiParametersid).SetInputVolumeNodeID(self.ui.inputSelector.currentNodeID)
             slicer.modules.cropvolume.logic().FitROIToInputVolume(slicer.mrmlScene.GetNodeByID(self.roiParametersid))
-            green_slice_node = slicer.app.layoutManager().sliceWidget('Green').sliceLogic()
-            green_slice_node.GetSliceCompositeNode().SetBackgroundVolumeID(self.ui.inputSelector.currentNodeID)
-            slicer.app.layoutManager().sliceWidget('Green').fitSliceToBackground()
-            red_slice_node = slicer.app.layoutManager().sliceWidget('Red').sliceLogic()
-            red_slice_node.GetSliceCompositeNode().SetBackgroundVolumeID(self.ui.inputSelector.currentNodeID)
-            slicer.app.layoutManager().sliceWidget('Red').fitSliceToBackground()
-            yellow_slice_node = slicer.app.layoutManager().sliceWidget('Yellow').sliceLogic()
-            yellow_slice_node.GetSliceCompositeNode().SetBackgroundVolumeID(self.ui.inputSelector.currentNodeID)
-            slicer.app.layoutManager().sliceWidget('Yellow').fitSliceToBackground()
 
     def onViewButton(self):
         '''
