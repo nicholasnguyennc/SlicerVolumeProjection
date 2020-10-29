@@ -1,5 +1,5 @@
 #-----------------------------------------------------------------------------
-set(MODULE_NAME Volume_Projection)
+set(MODULE_NAME VolumeProjection)
 
 #-----------------------------------------------------------------------------
 set(MODULE_PYTHON_SCRIPTS
@@ -7,7 +7,6 @@ set(MODULE_PYTHON_SCRIPTS
   )
 
 set(MODULE_PYTHON_RESOURCES
-  Resources/Icons/${MODULE_NAME}.png
   Resources/UI/${MODULE_NAME}.ui
   )
 
