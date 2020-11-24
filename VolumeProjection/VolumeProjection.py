@@ -143,11 +143,11 @@ class VolumeProjectionWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
         # reorder the aop b/c of changed order in selector
         if axis_of_projection is 2:
-            axis_of_projection = 0
-        elif axis_of_projection is 0:
             axis_of_projection = 1
-        elif axis_of_projection is 1:
+        elif axis_of_projection is 0:
             axis_of_projection = 2
+        elif axis_of_projection is 1:
+            axis_of_projection = 0
 
         # Convert numpy array into image data for sitk projection
 
@@ -158,10 +158,8 @@ class VolumeProjectionWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
                         'Mean': lambda array, axis: self.logic.runMean(array, axis), 'Standard Deviation': lambda array, axis: self.logic.runStdDev(array, axis)}
 
         projection_array = run_function[projection_type](projection_array, axis_of_projection)
-
         slicer.util.updateVolumeFromArray(slicer.mrmlScene.GetNodeByID(outputVolume), projection_array)
         slicer.util.arrayFromVolumeModified(slicer.mrmlScene.GetNodeByID(outputVolume))
-
         # Change output volume's display data to be the same as the input image
         slicer.mrmlScene.GetNodeByID(outputVolume).CreateDefaultDisplayNodes()
         slicer.mrmlScene.GetNodeByID(outputVolume).GetScalarVolumeDisplayNode().SetAutoWindowLevel(0)
@@ -169,7 +167,7 @@ class VolumeProjectionWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         # Change the slicer ui view to show the projected volume
         # axial = 1, sagitall = 2, coronal = 0
         if self.ui.showProjectionBox.isChecked():
-            if axis_of_projection is 0:
+            if axis_of_projection is 1:
                 green_slice_node = slicer.app.layoutManager().sliceWidget('Green').sliceLogic()
                 green_slice_node.GetSliceCompositeNode().SetBackgroundVolumeID(outputVolume)
                 slicer.app.layoutManager().sliceWidget('Green').fitSliceToBackground()
@@ -181,7 +179,7 @@ class VolumeProjectionWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
                 yellow_slice_node = slicer.app.layoutManager().sliceWidget('Yellow').sliceLogic()
                 yellow_slice_node.GetSliceCompositeNode().SetBackgroundVolumeID(inputVolume)
                 slicer.app.layoutManager().sliceWidget('Yellow').fitSliceToBackground()
-            elif axis_of_projection is 1:
+            elif axis_of_projection is 2:
                 red_slice_node = slicer.app.layoutManager().sliceWidget('Red').sliceLogic()
                 red_slice_node.GetSliceCompositeNode().SetBackgroundVolumeID(outputVolume)
                 slicer.app.layoutManager().sliceWidget('Red').fitSliceToBackground()
@@ -193,7 +191,7 @@ class VolumeProjectionWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
                 green_slice_node = slicer.app.layoutManager().sliceWidget('Green').sliceLogic()
                 green_slice_node.GetSliceCompositeNode().SetBackgroundVolumeID(inputVolume)
                 slicer.app.layoutManager().sliceWidget('Green').fitSliceToBackground()
-            elif axis_of_projection is 2:
+            elif axis_of_projection is 0:
                 yellow_slice_node = slicer.app.layoutManager().sliceWidget('Yellow').sliceLogic()
                 yellow_slice_node.GetSliceCompositeNode().SetBackgroundVolumeID(outputVolume)
                 slicer.app.layoutManager().sliceWidget('Yellow').fitSliceToBackground()
@@ -212,14 +210,15 @@ class VolumeProjectionWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
 
 class VolumeProjectionLogic(ScriptedLoadableModuleLogic):
 
-    axis_dict = {0: 'Coronal', 1: 'Axial', 2: 'Sagittal'}
+    # axis_dict = {0: 'Coronal', 1: 'Axial', 2: 'Sagittal'} # original method
+    axis_dict = {1: 'Coronal', 2: 'Axial', 0: 'Sagittal'} # new itk method?
     def runMax(self, data, axis):
-
         image_data = itk.GetImageFromArray(data)
         projectionType = itk.MaximumProjectionImageFilter()
         logging.info('Ran Maximum Projection along %s', self.axis_dict[axis])
         projectionType.SetProjectionDimension(axis)
         proj_array = itk.GetArrayViewFromImage(projectionType.Execute(image_data))
+        del projectionType
         return proj_array
 
     def runMin(self, data, axis):
@@ -227,6 +226,7 @@ class VolumeProjectionLogic(ScriptedLoadableModuleLogic):
         projectionType = itk.MinimumProjectionImageFilter()
         logging.info('Ran Minimum Projection along %s', self.axis_dict[axis])
         proj_array = itk.GetArrayViewFromImage(projectionType.Execute(image_data))
+        del projectionType
         return proj_array
 
     def runMean(self, data, axis):
@@ -235,6 +235,7 @@ class VolumeProjectionLogic(ScriptedLoadableModuleLogic):
         logging.info('Ran Mean Projection along %s', self.axis_dict[axis])
         projectionType.SetProjectionDimension(axis)
         proj_array = itk.GetArrayViewFromImage(projectionType.Execute(image_data))
+        del projectionType
         return proj_array
 
     def runStdDev(self, data, axis):
@@ -243,6 +244,7 @@ class VolumeProjectionLogic(ScriptedLoadableModuleLogic):
         logging.info('Ran Standard Deviation Projection along %s', self.axis_dict[axis])
         projectionType.SetProjectionDimension(axis)
         proj_array = itk.GetArrayViewFromImage(projectionType.Execute(image_data))
+        del projectionType
         return proj_array
 
 #
