@@ -112,8 +112,6 @@ class VolumeProjectionWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         else:
             self.ui.fitROIButton.enabled = False
 
-
-
     def changeROIVisibility(self):
         if self.ui.displayROIBox.isChecked():
             slicer.mrmlScene.GetNodeByID(self.widgetROIid).SetDisplayVisibility(1)
@@ -225,6 +223,7 @@ class VolumeProjectionLogic(ScriptedLoadableModuleLogic):
         image_data = itk.GetImageFromArray(data)
         projectionType = itk.MinimumProjectionImageFilter()
         logging.info('Ran Minimum Projection along %s', self.axis_dict[axis])
+        projectionType.SetProjectionDimension(axis)
         proj_array = itk.GetArrayViewFromImage(projectionType.Execute(image_data))
         del projectionType
         return proj_array
@@ -232,6 +231,7 @@ class VolumeProjectionLogic(ScriptedLoadableModuleLogic):
     def runMean(self, data, axis):
         image_data = itk.GetImageFromArray(data)
         projectionType = itk.MeanProjectionImageFilter()
+        # TODO: check data types of inputs/conversions
         logging.info('Ran Mean Projection along %s', self.axis_dict[axis])
         projectionType.SetProjectionDimension(axis)
         proj_array = itk.GetArrayViewFromImage(projectionType.Execute(image_data))
@@ -241,6 +241,7 @@ class VolumeProjectionLogic(ScriptedLoadableModuleLogic):
     def runStdDev(self, data, axis):
         image_data = itk.GetImageFromArray(data)
         projectionType = itk.StandardDeviationProjectionImageFilter()
+        # TODO: check data types of inputs/conversions
         logging.info('Ran Standard Deviation Projection along %s', self.axis_dict[axis])
         projectionType.SetProjectionDimension(axis)
         proj_array = itk.GetArrayViewFromImage(projectionType.Execute(image_data))
