@@ -215,7 +215,7 @@ class VolumeProjectionLogic(ScriptedLoadableModuleLogic):
         projectionType = itk.MaximumProjectionImageFilter()
         logging.info('Ran Maximum Projection along %s', self.axis_dict[axis])
         projectionType.SetProjectionDimension(axis)
-        proj_array = itk.GetArrayViewFromImage(projectionType.Execute(image_data))
+        proj_array = itk.GetArrayFromImage(projectionType.Execute(image_data))
         del projectionType
         return proj_array
 
@@ -224,7 +224,7 @@ class VolumeProjectionLogic(ScriptedLoadableModuleLogic):
         projectionType = itk.MinimumProjectionImageFilter()
         logging.info('Ran Minimum Projection along %s', self.axis_dict[axis])
         projectionType.SetProjectionDimension(axis)
-        proj_array = itk.GetArrayViewFromImage(projectionType.Execute(image_data))
+        proj_array = itk.GetArrayFromImage(projectionType.Execute(image_data))
         del projectionType
         return proj_array
 
@@ -234,7 +234,7 @@ class VolumeProjectionLogic(ScriptedLoadableModuleLogic):
         # TODO: check data types of inputs/conversions
         logging.info('Ran Mean Projection along %s', self.axis_dict[axis])
         projectionType.SetProjectionDimension(axis)
-        proj_array = itk.GetArrayViewFromImage(projectionType.Execute(image_data))
+        proj_array = itk.GetArrayFromImage(projectionType.Execute(image_data))
         del projectionType
         return proj_array
 
@@ -244,7 +244,7 @@ class VolumeProjectionLogic(ScriptedLoadableModuleLogic):
         # TODO: check data types of inputs/conversions
         logging.info('Ran Standard Deviation Projection along %s', self.axis_dict[axis])
         projectionType.SetProjectionDimension(axis)
-        proj_array = itk.GetArrayViewFromImage(projectionType.Execute(image_data))
+        proj_array = itk.GetArrayFromImage(projectionType.Execute(image_data))
         del projectionType
         return proj_array
 
